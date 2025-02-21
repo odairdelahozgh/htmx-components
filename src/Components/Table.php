@@ -41,9 +41,9 @@ class Table extends BaseComponent
     }
 
     return "
-      <div class="table table-responsive table-striped table-hover">
-        <table class="table" $attributes>
-          <thead class="table-dark" >{$headerHtml}</thead>
+      <div class=\"table table-responsive table-striped table-hover\">
+        <table class=\"table\" $attributes>
+          <thead class=\"table-dark\" >{$headerHtml}</thead>
             <tbody>{$rowsHtml}</tbody>
         </table>
       </div>";
