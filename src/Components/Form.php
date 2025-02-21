@@ -3,6 +3,7 @@
 namespace HtmxComponents\Components;
 
 use HtmxComponents\Traits\HtmxAttributes;
+use HtmxComponents\Enums\BootstrapStyle;
 
 class Form extends BaseComponent
 {

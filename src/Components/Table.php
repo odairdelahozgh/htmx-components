@@ -3,6 +3,7 @@
 namespace HtmxComponents\Components;
 
 use HtmxComponents\Traits\HtmxAttributes;
+use HtmxComponents\Enums\BootstrapStyle;
 
 class Table extends BaseComponent
 {
@@ -39,7 +40,13 @@ class Table extends BaseComponent
       $rowsHtml .= '</tr>';
     }
 
-    return "<table $attributes><thead>{$headerHtml}</thead><tbody>{$rowsHtml}</tbody></table>";
+    return "
+      <div class="table table-responsive table-striped table-hover">
+        <table class="table" $attributes>
+          <thead class="table-dark" >{$headerHtml}</thead>
+            <tbody>{$rowsHtml}</tbody>
+        </table>
+      </div>";
   }
 
 
