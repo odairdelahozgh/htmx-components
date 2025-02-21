@@ -1,0 +1,12 @@
+{
+  "name": "odairdelahoz/htmx-components",
+  "description": "A library of HTMX components in PHP 8",
+  "require": {
+      "php": "^8.0"
+  },
+  "autoload": {
+      "psr-4": {
+          "HtmxComponents\\": "src/"
+      }
+  }
+}
