@@ -12,19 +12,23 @@ namespace HtmxComponents\Components;
 
 abstract class BaseComponent
 {
-    public function __construct(protected array $attributes = [])
-    {
+  public function __construct(protected array $attributes = [])
+  {
+  }
 
+  protected function renderAttributes(): string
+  {
+    $attrs = [];
+    foreach ($this->attributes as $key => $value) {
+      $attrs[] = "$key=\"$value\"";
     }
+    return implode(' ', $attrs);
+  }
 
-    protected function renderAttributes(): string
-    {
-        $attrs = [];
-        foreach ($this->attributes as $key => $value) {
-            $attrs[] = "$key=\"$value\"";
-        }
-        return implode(' ', $attrs);
-    }
+  abstract public function render(): string;
 
-    abstract public function render(): string;
+  public function __toString(): string
+  {
+    return $this->render();
+  }
 }

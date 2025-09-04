@@ -1,0 +1,75 @@
+```mermaid
+classDiagram
+    direction BT
+    
+    class BaseComponent {
+        <<abstract>>
+        #attributes: array
+        +__construct(attributes: array)
+        #renderAttributes(): string
+        +render(): string
+        +__toString(): string
+    }
+
+    class HtmxAttributes {
+        <<trait>>
+        +hxPost(url: string): self
+        +hxGet(url: string): self
+        +hxTrigger(event: string): self
+        +hxTarget(target: string): self
+        +hxSwap(swap: string): self
+    }
+    
+    class BootstrapStyle {
+        <<enumeration>>
+        PRIMARY
+        SECONDARY
+        SUCCESS
+        DANGER
+        WARNING
+        INFO
+        LIGHT
+        DARK
+    }
+
+    class HtmxHelper {
+        <<helper>>
+        +button(label: string, attributes: array): Button
+        +modal(content: string, attributes: array): Modal
+        +form(action: string, method: string, content: string, attributes: array): Form
+        +table(headers: array, rows: array, attributes: array): Table
+    }
+
+    class Button {
+        #label: string
+        #style: BootstrapStyle
+        +__construct(label: string, attributes: array)
+        +style(style: BootstrapStyle): self
+        +render(): string
+    }
+    
+    class Form {
+        +__construct(action: string, method: string, content: string, attributes: array)
+    }
+
+    class Modal {
+        +__construct(content: string, attributes: array)
+    }
+
+    class Table {
+        +__construct(headers: array, rows: array, attributes: array)
+    }
+
+    BaseComponent <|-- Button
+    BaseComponent <|-- Form
+    BaseComponent <|-- Modal
+    BaseComponent <|-- Table
+    
+    Button ..> HtmxAttributes : "uses"
+    Button ..> BootstrapStyle : "uses"
+    
+    HtmxHelper ..> Button : "creates"
+    HtmxHelper ..> Modal : "creates"
+    HtmxHelper ..> Form : "creates"
+    HtmxHelper ..> Table : "creates"
+```

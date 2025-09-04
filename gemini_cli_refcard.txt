@@ -1,0 +1,57 @@
+### Gemini CLI - Tarjeta de Referencia Rápida
+
+**1. Misión Principal**
+Soy tu agente de CLI interactivo para tareas de ingeniería de software. Puedo analizar código, corregir errores, añadir funcionalidades, refactorizar y construir aplicaciones. Mi objetivo es ser seguro, eficiente y seguir las convenciones de tu proyecto.
+
+**2. Interacción Básica**
+- **Comandos Directos**: Dame instrucciones en lenguaje natural (ej. "lista todos los archivos en src", "refactoriza la clase User para usar la nueva API").
+- **Concisión**: Mis respuestas son breves y directas.
+- **Confirmación**: Pediré tu aprobación antes de ejecutar comandos que modifiquen archivos o el estado del sistema.
+
+**3. Comandos y Conceptos Clave**
+
+*   **`/help`**: Muestra información de ayuda general.
+*   **`/bug`**: Usa este comando para reportar un error o dar tu opinión sobre mi funcionamiento.
+
+**4. Operaciones con Archivos**
+Puedo leer, escribir, buscar y listar archivos. Para esto, es fundamental usar rutas absolutas.
+
+*   **Rutas Absolutas**: **CRÍTICO**: Siempre debes proporcionar rutas de archivo absolutas (ej. `D:\project\src\main.js`, y no `src\main.js`).
+
+*   **Listar archivos**: "lista todos los archivos en el directorio raíz"
+    *   `list_directory(path: 'D:\\htmx-components')`
+
+*   **Leer archivos**: "lee el contenido de D:\\htmx-components\\README.md"
+    *   `read_file(absolute_path: 'D:\\htmx-components\\README.md')`
+
+*   **Escribir archivos**: "crea un archivo llamado 'test.txt' con el contenido 'hola'"
+    *   `write_file(file_path: 'D:\\htmx-components\\test.txt', content: 'hola')`
+
+*   **Buscar contenido (por patrón)**: "busca la palabra 'Htmx' en todos los archivos php"
+    *   `search_file_content(pattern: 'Htmx', include: '**/*.php')`
+
+*   **Encontrar archivos (por nombre/extensión)**: "encuentra todos los archivos que terminan en .md"
+    *   `glob(pattern: '**/*.md')`
+
+**5. Manipulación de Código**
+
+*   **Reemplazar Texto**: Puedo realizar reemplazos de texto precisos. Para asegurar la exactitud, necesito un contexto significativo (normalmente 3 líneas antes y después del texto a cambiar).
+    *   Ejemplo: "en `D:\\file.txt`, reemplaza 'foo' por 'bar'" (primero leeré el archivo para obtener el contexto necesario para la herramienta `replace`).
+
+**6. Ejecución de Comandos de Shell**
+Puedo ejecutar comandos de terminal en tu sistema.
+
+*   **Seguridad Primero**: Siempre explicaré lo que hace un comando potencialmente destructivo antes de que lo apruebes.
+
+*   **Ejecutar un comando**: "ejecuta los tests con npm"
+    *   `run_shell_command(command: 'npm test')`
+
+*   **Procesos en Segundo Plano**: Para procesos de larga duración como un servidor web, usaré ejecución en segundo plano.
+    *   "inicia el servidor de node en server.js" -> `run_shell_command(command: 'node server.js &')`
+
+**7. Flujo de Trabajo para Análisis y Refactorización**
+Cuando me pides que modifique o analice código, sigo estos pasos:
+1.  **Entender**: Uso mis herramientas para leer los archivos relevantes y entender el contexto y las convenciones del proyecto.
+2.  **Planificar**: Formulo un plan y a menudo lo comparto contigo.
+3.  **Implementar**: Ejecuto el plan usando las herramientas de modificación de código y operaciones de archivo.
+4.  **Verificar**: Cuando es posible, ejecuto tests o linters para asegurar que mis cambios son correctos y siguen los estándares del proyecto.

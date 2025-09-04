@@ -1,8 +1,11 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use HtmxComponents\Helpers\HtmxHelper;
+use HtmxComponents\Enums\BootstrapStyle;
 
-$button = HtmxHelper::button('Click Me', ['hx-post' => '/api/click', 'hx-swap' => 'outerHTML']);
-echo $button->render();
+echo HtmxHelper::button('Click Me')
+    ->hxPost('/api/click')
+    ->hxSwap('outerHTML')
+    ->style(BootstrapStyle::SUCCESS);

@@ -12,11 +12,10 @@ class HtmxHelper
   
   public static function button(
     string $label, 
-    BootstrapStyle $style = BootstrapStyle::PRIMARY, 
     array $attributes = []
   ): Button
   {
-    return new Button($label, $style, $attributes);
+    return new Button($label, $attributes);
   }
 
   public static function modal(
